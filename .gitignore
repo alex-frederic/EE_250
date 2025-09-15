@@ -1,1 +1,6 @@
+# lab_01 just contains image files for Ubuntu and Raspbian for EE 250.
+# Such large files cause problems when pushing to GitHub, and they can be found
+# elsewhere on the class cloud.
+# This are kept locally for convenience, but consider zipping if you want to
+# save them to GitHub.
 lab_01/
