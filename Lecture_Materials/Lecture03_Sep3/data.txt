@@ -1,0 +1,5 @@
+101,Apple,Red
+102,Banana,Yellow
+103,Cherry,Dark Red
+104,Date,Brown
+105,Elderberry,Purple
