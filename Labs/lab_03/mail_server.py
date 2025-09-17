@@ -173,9 +173,10 @@ def delete_mail_route(mail_id: str):
         bool: True if the mail was deleted, False otherwise
     """
     # TODO: implement this function
-    res = delete_mail(mail_id)
+    deleted_successfully = delete_mail(mail_id)
+    res = jsonify(deleted_successfully)
 
-    if res:
+    if deleted_successfully:
         res.status_code = 200 # Status code for "ok"
     else:
         res.status_code = 404 # Status code for "resource not found"
