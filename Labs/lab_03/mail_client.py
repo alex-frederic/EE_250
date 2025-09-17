@@ -33,25 +33,62 @@ def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
 
 def get_inbox(recipient: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets the inbox of a user (all of the emails sent by that user) by making a GET
+    request to the /main/inbox/<recipient> endpoint.
+    Prints the json representation of all relevant emails to the console.
+
+    Args:
+        recipient (str): the recipient whose inbox you want to retrieve
     
+    Returns:
+        None: just prints the json representation of the recipient's inbox
     """
     response = requests.get(f'{SERVER}/mail/inbox/{recipient}')
     pprint.pprint(response.json())
 
 def get_sent(sender: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets all the of the emails sent by a specific user from the server by making
+    a GET request to the /mail/sent/<sender> endpoint.
+    Prints the json representation of all relevant emails to the console.
+
+    Args:
+        sender (str): the sender whose emails you want to retrieve
+    
+    Returns:
+        None: just prints the json representation of the sender's emails
     """
     response = requests.get(f'{SERVER}/mail/sent/{sender}')
     pprint.pprint(response.json())
 
 def get_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets a specific email matching a certain id from the server by making a GET
+    request to the /mail/<mail_id> endpoint.
+    Prints the json representation of the email to the console.
+
+    Args:
+        mail_id (str): the id of the email to get from the server
+
+    Returns:
+        None: just prints the json representation of the acquired email
     """
     response = requests.get(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
 
 def delete_mail(mail_id: str) -> None:
     """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Deletes a specific email matching a certain id from the server by making a
+    DELETE request to the /mail/<mail_id> endpoint.
+    Prints "True" if a mail entry with the specified id was successfully deleted.
+    Prints "False" if no mail entry with the specified id could be found to delete.
+
+    Args:
+        mail_id (str): the id of the email to delete from the server
+    
+    Returns:
+        None: just prints a boolean telling whether the specified mail entry was
+        successfully deleted or not
     """
     response = requests.delete(f'{SERVER}/mail/{mail_id}')
     pprint.pprint(response.json())
