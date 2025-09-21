@@ -1,0 +1,160 @@
+import requests
+import argparse
+import pprint # For pretty printing
+
+SERVER = 'http://172.20.10.4:5000'
+
+def send_mail(recipient: str, sender: str, subject: str, body: str) -> bool:
+    """
+    Sends a mail entry to the server by making a POST request to the /mail endpoint.
+    The JSON body of the request contains the following keys:
+    - recipient
+    - sender
+    - subject
+    - body
+    
+    Args:
+        recipient (str): The recipient of the mail
+        sender (str): The sender of the mail
+        subject (str): The subject of the mail
+        body (str): The body of the mail
+
+    Returns:
+        bool: True if the mail was sent successfully, False otherwise
+    """
+    mail_entry = {
+        'recipient': recipient,
+        'sender': sender,
+        'subject': subject,
+        'body': body,
+    }
+    response = requests.post(f'{SERVER}/mail', json=mail_entry)
+    pprint.pprint(response.json())
+
+def get_inbox(recipient: str) -> None:
+    """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets the inbox of a user (all of the emails sent by that user) by making a GET
+    request to the /main/inbox/<recipient> endpoint.
+    Prints the json representation of all relevant emails to the console.
+
+    Args:
+        recipient (str): the recipient whose inbox you want to retrieve
+    
+    Returns:
+        None: just prints the json representation of the recipient's inbox
+    """
+    response = requests.get(f'{SERVER}/mail/inbox/{recipient}')
+    pprint.pprint(response.json())
+
+def get_sent(sender: str) -> None:
+    """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets all the of the emails sent by a specific user from the server by making
+    a GET request to the /mail/sent/<sender> endpoint.
+    Prints the json representation of all relevant emails to the console.
+
+    Args:
+        sender (str): the sender whose emails you want to retrieve
+    
+    Returns:
+        None: just prints the json representation of the sender's emails
+    """
+    response = requests.get(f'{SERVER}/mail/sent/{sender}')
+    pprint.pprint(response.json())
+
+def get_mail(mail_id: str) -> None:
+    """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Gets a specific email matching a certain id from the server by making a GET
+    request to the /mail/<mail_id> endpoint.
+    Prints the json representation of the email to the console.
+
+    Args:
+        mail_id (str): the id of the email to get from the server
+
+    Returns:
+        None: just prints the json representation of the acquired email
+    """
+    response = requests.get(f'{SERVER}/mail/{mail_id}')
+    pprint.pprint(response.json())
+
+def delete_mail(mail_id: str) -> None:
+    """TODO: fill out this docstring (using the send_mail docstring as a guide)
+    Deletes a specific email matching a certain id from the server by making a
+    DELETE request to the /mail/<mail_id> endpoint.
+    Prints "True" if a mail entry with the specified id was successfully deleted.
+    Prints "False" if no mail entry with the specified id could be found to delete.
+
+    Args:
+        mail_id (str): the id of the email to delete from the server
+    
+    Returns:
+        None: just prints a boolean telling whether the specified mail entry was
+        successfully deleted or not
+    """
+    response = requests.delete(f'{SERVER}/mail/{mail_id}')
+    pprint.pprint(response.json())
+
+# Command Line Interface
+# making CLIs with argparse may be helpful for you in the future
+# see if you can understand what each line is doing
+def get_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description='Mail Client')
+    
+    subparsers = parser.add_subparsers(dest='command')
+    subparsers.required = True
+
+    send_parser = subparsers.add_parser('send', help='Send a mail')
+    send_parser.add_argument('body', help='The body of the mail')
+    send_parser.add_argument(
+        '-t', "--to", 
+        dest="recipient",
+        help='The recipient of the mail'
+    )
+    send_parser.add_argument(
+        '-f', "--from",
+        dest="sender",
+        help='The sender of the mail'
+    )
+    send_parser.add_argument(
+        '-s', "--subject", 
+        help='The subject of the mail', 
+        default="No Subject"
+    )
+
+    inbox_parser = subparsers.add_parser('inbox', help='Get your inbox')
+    inbox_parser.add_argument('-u', "--user", help='The recipient of the mail')
+
+    sent_parser = subparsers.add_parser('sent', help='Get your sent mail')
+    sent_parser.add_argument('-u', "--user", help='The sender of the mail')
+
+    get_parser = subparsers.add_parser('get', help='Get a mail')
+    get_parser.add_argument('mail_id', help='The id of the mail')
+
+    delete_parser = subparsers.add_parser('delete', help='Delete a mail')
+    delete_parser.add_argument('mail_id', help='The id of the mail')
+
+    return parser
+
+def main():
+    parser = get_parser()
+    args = parser.parse_args()
+
+    if args.command == 'send':
+        send_mail(args.recipient, args.sender, args.subject, args.body)
+    elif args.command == 'inbox':
+        get_inbox(args.user)
+    elif args.command == 'sent':
+        get_sent(args.user)
+    elif args.command == 'get':
+        get_mail(args.mail_id)
+    elif args.command == 'delete':
+        delete_mail(args.mail_id)
+
+# TODO: run the code!
+# to run the code, open a terminal and type:
+#   python mail_client.py --help
+# For example, to send a mail, type:
+#   python mail_client.py send -t "recipient" -f "sender" -s "subject" "body"
+# you'll need to demo sending, receiving, and deleting mail for checkoff.
+if __name__ == '__main__':
+    main()
+
