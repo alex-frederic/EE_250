@@ -39,7 +39,15 @@ for i in udp_data:
 	print(i)
 print()
 
+run_names = ["Run" + str(i) for i in range(1, 6) ]
+for run in range(0, len(distances)):
+	plt.plot(run_names, tcp_data[run][1:6], marker="o", color="blue", label="TCP")
+	plt.plot(run_names, udp_data[run][1:6], marker="o", color="red", label="UDP")
 
-plt.plot([1, 2, 3, 4, 5], tcp_data[0][1:6], label="y = x^2", color="blue")
-plt.plot([1, 2, 3, 4, 5], udp_data[0][1:6], label="y = x^2", color="blue")
-plt.show()
+	plt.title( "TCP & UDP Throuput at " + str(tcp_data[run][0]) + "m Distance" )
+	plt.xlabel("Test Runs")
+	plt.ylabel("Throughput (Mbps)")
+
+	plt.legend()
+
+	plt.show()
