@@ -47,7 +47,7 @@ def get_wifi_signal_strength() -> int:
 def main():
     # Choose at least 5 locations to sample the signal strength at
     # These can be rooms in your house, hallways, different floors, outside, etc. (as long as you can get a WiFi signal)
-    locations = ['bedroom', 'living room', 'kitchen', 'bathroom', 'garage']
+    locations = ['living room', 'kitchen', 'bathroom', 'closet', 'outside']
     samples_per_location = 10 # number of samples to take per location
     time_between_samples = 1 # time between samples (in seconds)
 
