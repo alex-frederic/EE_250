@@ -33,6 +33,8 @@ for trial in udp_files:
 
 run_names = ["Run" + str(i) for i in range(1, 6) ]
 for run in range(0, len(distances)):
+	plt.figure(tcp_data[run][0])
+
 	plt.plot(run_names, tcp_data[run][1:6], marker="o", color="blue", label="TCP")
 	plt.plot(run_names, udp_data[run][1:6], marker="o", color="red", label="UDP")
 
