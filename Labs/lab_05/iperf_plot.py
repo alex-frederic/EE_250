@@ -8,7 +8,6 @@ distances: list[int] = [2, 6, 10, 14, 18]
 
 tcp_files: list[str] = [TCP_BASE + str(d) + "m.csv" for d in distances]
 udp_files: list[str] = [UDP_BASE + str(d) + "m.csv" for d in distances]
-print(tcp_files)
 
 tcp_data = []
 for trial in tcp_files:
@@ -20,9 +19,6 @@ for trial in tcp_files:
 			tcp_trial_data.append( float(d.strip()) )
 		
 		tcp_data.append(tcp_trial_data)
-for i in tcp_data:
-	print(i)
-print()
 
 udp_data = []
 for trial in udp_files:
@@ -35,10 +31,6 @@ for trial in udp_files:
 		
 		udp_data.append(udp_trial_data)
 
-for i in udp_data:
-	print(i)
-print()
-
 run_names = ["Run" + str(i) for i in range(1, 6) ]
 for run in range(0, len(distances)):
 	plt.plot(run_names, tcp_data[run][1:6], marker="o", color="blue", label="TCP")
@@ -50,4 +42,4 @@ for run in range(0, len(distances)):
 
 	plt.legend()
 
-	plt.show()
+	plt.savefig(str(tcp_data[run][0]) + "m_trials.png")
