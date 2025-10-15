@@ -20,7 +20,7 @@ while True:
     ult = grovepi.ultrasonicRead(ultrasonic_ranger)
     if ult > max_ult and ult < 60000:
       max_ult = ult
-    print(ult + ", " + max_ult)
+    print(str(ult) + ", " + str(max_ult))
 
     # TODO: read threshold from potentiometer
     pot = grovepi.analogRead(potentiometer)
