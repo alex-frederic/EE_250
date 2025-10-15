@@ -28,10 +28,11 @@ while True:
     MAX_ULT = 507
     MAX_POT = 1023
     threshold = pot * (MAX_ULT / MAX_POT)
+    
+    too_close = ult < threshold
 
     # TODO: format LCD text according to threshhold
-    too_close = ult < threshold
-    obj_alert = "OBJ_PRES" if too_close else ""
+    obj_alert = "OBJ_PRES" if too_close else "        "
     disp = "%3dcm %s\n%3dcm" %(threshold, obj_alert, ult)
 
     setText_norefresh(disp)
