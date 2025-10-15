@@ -31,7 +31,7 @@ while True:
     
     MAX_DIST = 507
     MAX_POT = 1023
-    threshold = pot * (MAX_DIST / MAX_POT)
+    threshold = int( pot * (MAX_DIST / MAX_POT) )
 
     too_close = distance < threshold
 
