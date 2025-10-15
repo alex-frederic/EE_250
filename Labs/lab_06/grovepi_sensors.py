@@ -12,8 +12,15 @@ grovepi.pinMode(potentiometer,"INPUT")
 
 # clear lcd screen  before starting main loop
 setText("")
+setRGB(0, 255, 0)
 
-while True:
+setText_norefresh("abcdef")
+
+time.sleep(10)
+
+setText_norefresh("123")
+
+# while True:
   # try:
   # TODO:read distance value from Ultrasonic Ranger and print distance on LCD
   # print(grovepi.ultrasonicRead(ultrasonic_ranger))
@@ -22,8 +29,7 @@ while True:
   # print(grovepi.analogRead(potentiometer))
   
   # TODO: format LCD text according to threshhold
-  setRGB(255, 0, 0)
-  setCursor(1, 1)
+  
   
   # except IOError:
   #   print("Error")
