@@ -23,6 +23,7 @@ while True:
   
   # TODO: format LCD text according to threshhold
   setRGB(255, 0, 0)
+  setCursor(1, 1)
   
   # except IOError:
   #   print("Error")
