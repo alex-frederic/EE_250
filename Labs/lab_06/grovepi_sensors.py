@@ -16,7 +16,7 @@ setText("")
 while True:
   try:
     # TODO:read distance value from Ultrasonic Ranger and print distance on LCD
-  
+    print(grovepi.ultrasonicRead(ultrasonic_ranger))
 
     # TODO: read threshold from potentiometer
 
