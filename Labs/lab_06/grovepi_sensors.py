@@ -13,11 +13,14 @@ grovepi.pinMode(potentiometer,"INPUT")
 # clear lcd screen  before starting main loop
 setText("")
 
+max_ult = 0
 while True:
   try:
     # TODO:read distance value from Ultrasonic Ranger and print distance on LCD
     ult = grovepi.ultrasonicRead(ultrasonic_ranger)
-    print(ult)
+    if ult > max_ult and ult < 60000:
+      max_ult = ult
+    print(ult + ", " + max_ult)
 
     # TODO: read threshold from potentiometer
     pot = grovepi.analogRead(potentiometer)
