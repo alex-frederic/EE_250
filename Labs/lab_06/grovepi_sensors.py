@@ -22,7 +22,7 @@ while True:
   # print(grovepi.analogRead(potentiometer))
   
   # TODO: format LCD text according to threshhold
-  setCursor(1, 0)
+  setRGB(255, 0, 0)
   
   # except IOError:
   #   print("Error")
