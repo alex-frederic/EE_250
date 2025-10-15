@@ -14,15 +14,15 @@ grovepi.pinMode(potentiometer,"INPUT")
 setText("")
 
 while True:
-  try:
-    # TODO:read distance value from Ultrasonic Ranger and print distance on LCD
-    # print(grovepi.ultrasonicRead(ultrasonic_ranger))
+  # try:
+  # TODO:read distance value from Ultrasonic Ranger and print distance on LCD
+  # print(grovepi.ultrasonicRead(ultrasonic_ranger))
 
-    # TODO: read threshold from potentiometer
-    # print(grovepi.analogRead(potentiometer))
-    
-    # TODO: format LCD text according to threshhold
-    lcd.setCursor(1, 0)
+  # TODO: read threshold from potentiometer
+  # print(grovepi.analogRead(potentiometer))
+  
+  # TODO: format LCD text according to threshhold
+  lcd.setCursor(1, 0)
   
   # except IOError:
   #   print("Error")
