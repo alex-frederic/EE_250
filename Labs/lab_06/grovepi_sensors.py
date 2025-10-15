@@ -10,33 +10,38 @@ ultrasonic_ranger = 2
 potentiometer = 0
 grovepi.pinMode(potentiometer,"INPUT")
 
-# clear lcd screen  before starting main loop
+# clear lcd screen before starting main loop
 setText("")
 
-# max_ult = 0
+# Only uncomment if testing max Ultrasonic Ranger output
+# max_distance = 0
+
 while True:
   try:
     # TODO:read distance value from Ultrasonic Ranger and print distance on LCD
-    ult = grovepi.ultrasonicRead(ultrasonic_ranger)
-    # if ult > max_ult and ult < 60000:
-    #   max_ult = ult
-    # print(str(ult) + ", " + str(max_ult))
+    distance = grovepi.ultrasonicRead(ultrasonic_ranger)
+
+    # Code for detecting the maximum output of the Ultrasonic Ranger
+    # if distance > max_distance and distance < 60000:
+    #   max_distance = distance
+    # print(str(distance) + ", " + str(max_distance))
 
     # TODO: read threshold from potentiometer
     pot = grovepi.analogRead(potentiometer)
     
-    MAX_ULT = 507
+    MAX_DIST = 507
     MAX_POT = 1023
-    threshold = pot * (MAX_ULT / MAX_POT)
-    
-    too_close = ult < threshold
+    threshold = pot * (MAX_DIST / MAX_POT)
+
+    too_close = distance < threshold
 
     # TODO: format LCD text according to threshhold
     obj_alert = "OBJ_PRES" if too_close else "        "
-    disp = "%3dcm %s\n%3dcm" %(threshold, obj_alert, ult)
+    disp = "%3dcm %s\n%3dcm" %(threshold, obj_alert, distance)
 
     setText_norefresh(disp)
 
+    # Set color appropriately for given distance and threshold values
     if too_close:
       setRGB(255,0,0)
     else:
