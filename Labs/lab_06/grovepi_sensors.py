@@ -1,3 +1,6 @@
+# Team Members: Alex Frederic (GitHub: alex-frederic, arfreder@usc.edu)
+#               Peyton Crawford
+
 import sys
 sys.path.append('~/Dexter/GrovePi/Software/Python')
 import time
