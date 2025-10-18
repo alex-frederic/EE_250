@@ -36,8 +36,24 @@ each change.
 
 Answer to Question 3:
 
-<!-- TODO -->
+According to the grovepi source code, the ultrasonicRead() first calls the
+write_i2c_block() function to write the command code and pin number to the GrovePi.
+This function calls time.sleep(0.002 + additional_waiting) a single time upon a
+successful write operation. The additional_waiting variable is set to a constant 0
+without modifying the grovepi source code, so this is effectively time.sleep(0.002).
+Then, to actually read the value from the ultrasonic ranger via the digital pin its
+connected to, it calls the read_identified_i2c_block(), which calls the
+read_i2c_block() function. Upon a successful read, read_i2c_block() also calls
+time.sleep(0.002 + additional_waiting) = time.sleep(0.002) a single time. If
+read_i2c_block() returns a valid list of bytes on the first attempt, then
+read_identified_i2c_block() only calls it once. Therefore, ultrasonicRead() incurs a
+total waiting buffer in between readings of the ultrasonic sensor of 2 ms + 2ms = 4ms.
 
+As indicated by the "i2c" in the above function calls, the RPi uses the I2C protocol to
+communicate with the Atmega328P chip on the GrovePi when using the grovepi python
+library. According to Wikipedia, this is a serial, half-duplex protocol.
+(https://en.wikipedia.org/wiki/I%C2%B2C)
+	
 
 Answer to Question 4:
 
@@ -63,4 +79,4 @@ implemented by either a ladder circuit of resistors or a timer circuit.
 
 Answer for Question 5:
 
-<!-- TODO -->
+I would first navigate to the 
