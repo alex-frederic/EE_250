@@ -1,6 +1,8 @@
 # Team Members: Alex Frederic (GitHub: alex-frederic, arfreder@usc.edu)
 #               Peyton Crawford
 
+# NOTE: Always run with the "python3" command, not just "python"
+
 import sys
 sys.path.append('~/Dexter/GrovePi/Software/Python')
 import time
@@ -39,7 +41,15 @@ while True:
     too_close = distance < threshold
 
     # TODO: format LCD text according to threshhold
-    obj_alert = "OBJ_PRES" if too_close else "        "
+
+    obj_alert = "OBJ_PRES" if too_close else "          "
+    # NOTE: The field of spaces is intentionally 2 characters longer than "OBJ_PRES".
+    # This helps with a bug wherein the letter "ES" appear to the left of where the text
+    # is meant to appear when the text changes really quickly. These extraneous characters
+    # don't get erased along with the rest of the text unless the space field is 2
+    # characters longer than the alert text, so this prevents them from lingering there
+    # for the rest of the program's runtime.
+
     disp = "%3dcm %s\n%3dcm" %(threshold, obj_alert, distance)
 
     setText_norefresh(disp)
