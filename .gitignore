@@ -4,4 +4,8 @@
 # This are kept locally for convenience, but consider zipping if you want to
 # save them to GitHub.
 lab_01/
-lab_07/Component_Files
+
+# Componoent_Files in lab_07 contains some decently data-heavy component files.
+# These are free downloads off of SnapEda, so no reason to store them in the
+# GitHub. The only reason they are on the computer is for KiCad modeling.
+Component_Files/
