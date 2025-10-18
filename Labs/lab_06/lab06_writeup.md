@@ -79,4 +79,28 @@ implemented by either a ladder circuit of resistors or a timer circuit.
 
 Answer for Question 5:
 
-I would first navigate to the 
+I would first navigate to the the cloned GrovePi git repo. Then, I would run
+"python3 example.py" to verify whether or not the LCD screen is connected to the GrovePi
+correctly or not to allow the RPi to communicate with it. Potentially, I'd also do this with the
+other two exmaple scripts in the folder to ensure all of the functionality of the libary worked
+as intended. If the pre-made example scripts don't work with the LCD screen, that means
+something is definitely wrong with the wiring, so I would then adjust the wiring to fix the
+issue. Assuming I were using only the functions found in the grove_rgb_lcd directory in my
+Python script, it couldn't be a problem with the commands after verifying they can reach the LCD
+screen, so it must be a problem with the Python script.
+
+If that wasn't the problem, then the problem must be with my Python script since, assuming I
+were using only the functions found in the grove_rgb_lcd directory, it couldn't be a problem with
+the commands I was using, having just verified them in the previous step. Then, I would create a
+new branch with "git checkout -c debugLCD" and add print statements to the area of the code
+responsible for writing to the LCD screen to ensure the code even reached the command
+responsible for writing to the LCD screen. If that part of the code didn't trigger when it was
+supposed to, I would trace through the while loop to see why it doesn't. Potentially, I'd add
+other print statements elsewhere in the program to check what lines the program is actually
+accessing and what states the variables are in at various points. Where they don't match what I
+intended/expected, that must be where the problem lies. Once I'd verified that the control flow
+of the program worked as intended with print statements and that that logic interacted with the
+GrovePi as expected, I'd add and commit just the changes that fix the issue without the debug
+statements. Finally, I'd merge debugLCD back onto main with "git checkout main;
+git merge debugLCD", resolve any merge conflicts, and delete the debugLCD branch with
+"git checkout -d debugLCD".
