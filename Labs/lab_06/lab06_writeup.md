@@ -14,7 +14,7 @@ git push origin main
 
 Answer to Question 2:
 
-For this lab, we mainly edited the files on the local environment of the laptop and
+For this lab, we mainly pair-programmed on the local environment of the laptop and
 then pushed them to GitHub. The changes were then pulled into the RPi, which contained
 the cloned git repository. After testing the code on the RPi, we would make changes we
 wanted to test in VSCode on the laptop, commit them, and push to GitHub before pulling
