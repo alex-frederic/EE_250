@@ -1,17 +1,13 @@
 import paho.mqtt.client as mqtt
 import time
 import socket
-from yolo import runInference
+# from yolo import runInference
 
 def on_connect(client, userdata, flags, rc):
 	print("Connected to test.mosqsuitto.org")
 	print("Result Code: " + str(rc))
 
 if __name__ == '__main__':
-	name = socket.gethostname()
-	ip_address = socket.gethostbyname(name)
-	print("Publisher IP Address: " + ip_address)
-
 	#create a client object
 	client = mqtt.Client()
 	
@@ -22,16 +18,19 @@ if __name__ == '__main__':
 
 	client.loop_start()
 	time.sleep(1)
-
+	count = 0
 	while True:
 		byteArr = 0
-		# with open("./rpicamexample.jpg",'rb') as file:
-		# 	print("Reading Image File")
-		# 	filecontent = file.read()
-		# 	byteArr = bytearray(filecontent)
+		with open("./rpicamexample.jpg",'rb') as file:
+			print("Reading Image File")
+			filecontent = file.read()
+			byteArr = bytearray(filecontent)
 	
 
+		print("Publishing...")
+		client.publish("piwatch/send_img", byteArr)
 
-		client.publish("piwatch/send_img", "Test")
-
-		break
+		time.sleep(2)
+		count += 1
+		if(count == 5)
+			break
