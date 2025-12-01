@@ -32,5 +32,5 @@ if __name__ == '__main__':
 
 		time.sleep(2)
 		count += 1
-		if(count == 5)
+		if(count == 5):
 			break
