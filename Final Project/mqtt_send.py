@@ -11,10 +11,11 @@ if __name__ == '__main__':
 			print("Reading Image File")
 			filecontent = file.read()
 			byteArr = bytearray(filecontent)
-	
+		print(byteArr)
 
 		print("Publishing...")
 		publish.single("piwatch/send_img", byteArr, hostname="test.mosquitto.org")
+		publish.single("piwatch/send_img", "Test Message", hostname="test.mosquitto.org")
 
 		time.sleep(2)
 		count += 1
