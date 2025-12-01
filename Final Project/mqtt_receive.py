@@ -19,6 +19,7 @@ def on_message(client, userdata, msg):
     print("Default callback - topic: " + msg.topic + "   msg: " + str(msg.payload, "utf-8"))
 
 if __name__ == '__main__':
+	print("Trying to connect")
 	client = mqtt.Client()
 	client.on_connect = on_connect
 	client.on_message = on_message

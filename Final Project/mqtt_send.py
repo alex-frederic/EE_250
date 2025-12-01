@@ -8,9 +8,9 @@ def on_connect(client, userdata, flags, rc):
 	print("Result Code: " + str(rc))
 
 if __name__ == '__main__':
-	name = socket.gethostname()
-	ip_address = socket.gethostbyname(name)
-	print("Publisher IP Address: " + ip_address)
+	# name = socket.gethostname()
+	# ip_address = socket.gethostbyname(name)
+	# print("Publisher IP Address: " + ip_address)
 
 	#create a client object
 	client = mqtt.Client()
