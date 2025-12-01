@@ -31,3 +31,5 @@ if __name__ == '__main__':
 
 
 		client.publish("piwatch/send_img", byteArr)
+
+		break
