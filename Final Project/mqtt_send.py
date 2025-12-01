@@ -2,7 +2,7 @@ import paho.mqtt.publish as publish
 import time
 # from yolo import runInference
 
-if __name == '__main__':
+if __name__ == '__main__':
 	while True:
 		byteArr = 0
 		with open("./rpicamexample.jpg",'rb') as file:
