@@ -9,10 +9,11 @@ def on_connect(client, userdata, flags, rc):
 	
 def on_receive_img(client, userdata, msg):
 	print("Received Image!")
-	img = msg.payload
-	f = open("output.jpg", "wb")
-	f.write(img)
-	f.close()
+	print(msg.payload)
+	# img = msg.payload
+	# f = open("output.jpg", "wb")
+	# f.write(img)
+	# f.close()
 
 def on_message(client, userdata, msg):
     print("Default callback - topic: " + msg.topic + "   msg: " + str(msg.payload, "utf-8"))

@@ -9,4 +9,5 @@ def runInference(img):
     results = model(cv2.imread(img))
 
     # Return annotated result
-    return results[0].plot()
+    annotated = results[0].plot()
+    return annotated

@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 import time
 import socket
+from yolo import runInference
 
 def on_connect(client, userdata, flags, rc):
 	print("Connected to test.mosqsuitto.org")
@@ -24,13 +25,13 @@ if __name__ == '__main__':
 
 	while True:
 		byteArr = 0
-		with open("./rpicamexample.jpg",'rb') as file:
-			print("Reading Image File")
-			filecontent = file.read()
-			byteArr = bytearray(filecontent)
+		# with open("./rpicamexample.jpg",'rb') as file:
+		# 	print("Reading Image File")
+		# 	filecontent = file.read()
+		# 	byteArr = bytearray(filecontent)
 	
 
 
-		client.publish("piwatch/send_img", byteArr)
+		client.publish("piwatch/send_img", "Test")
 
 		break
