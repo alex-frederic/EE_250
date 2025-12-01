@@ -14,8 +14,12 @@ def on_receive_img(client, userdata, img):
 	f.write(img)
 	f.close()
 
+def on_message(client, userdata, msg):
+    print("Default callback - topic: " + msg.topic + "   msg: " + str(msg.payload, "utf-8"))
+
 if __name__ == '__main__':
 	client = mqtt.Client()
 	client.on_connect = on_connect
+	client.on_message = on_message
 	client.connect(host="test.mosquitto.org", port=1883, keepalive=60)
 	client.loop_forever()
