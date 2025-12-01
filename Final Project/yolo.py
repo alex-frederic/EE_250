@@ -8,8 +8,5 @@ def runInference(img):
     # Load Image and Run inference
     results = model(cv2.imread(img))
 
-    # Show result
-    annotated = results[0].plot()
-    f = open("inference_output.jpg", "wb")
-    f.write(annotated)
-    f.close()
+    # Return annotated result
+    return results[0].plot()
