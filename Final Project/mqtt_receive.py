@@ -9,7 +9,10 @@ def on_connect(client, userdata, flags, rc):
 	
 def on_receive_img(client, userdata, img):
 	print("Received Image!")
-	print(img)
+	
+	f = open("output.jpg", "wb")
+	f.write(img)
+	f.close()
 
 if __name__ == '__main__':
 	client = mqtt.Client()
