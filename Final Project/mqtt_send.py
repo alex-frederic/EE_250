@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
 		print("Publishing...")
 		publish.single("piwatch/send_img", byteArr, hostname="test.mosquitto.org", qos=2)
-		publish.single("piwatch/send_img", "Test Message", hostname="test.mosquitto.org", qos=2)
+		# publish.single("piwatch/send_img", "Test Message", hostname="test.mosquitto.org", qos=2)
 
 		time.sleep(2)
 		count += 1
