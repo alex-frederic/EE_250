@@ -25,6 +25,7 @@ if __name__ == '__main__':
 	while True:
 		byteArr = 0
 		with open("./rpicamexample.jpg",'rb') as file:
+			print("Reading Image File")
 			filecontent = file.read()
 			byteArr = bytearray(filecontent)
 	
