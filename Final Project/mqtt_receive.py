@@ -4,8 +4,8 @@ def on_connect(client, userdata, flags, rc):
 	print("Connected to test.mosquitto.org")
 	print("Result Code: " + rc)
 
-	client.subscribe("arfreder/send_img")
-	client.message_callback_add("arfreder/send_img", on_receive_img)
+	client.subscribe("piwatch/send_img")
+	client.message_callback_add("piwatch/send_img", on_receive_img)
 	
 def on_receive_img(client, userdata, img):
 	print("Received Image!")
