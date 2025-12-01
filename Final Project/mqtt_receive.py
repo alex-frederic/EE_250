@@ -2,7 +2,7 @@ import paho.mqtt.client as mqtt
 
 def on_connect(client, userdata, flags, rc):
 	print("Connected to test.mosquitto.org")
-	print("Result Code: " + rc)
+	print("Result Code: " + str(rc))
 
 	client.subscribe("arfreder/send_img")
 	client.message_callback_add("arfreder/send_img", on_receive_img)
