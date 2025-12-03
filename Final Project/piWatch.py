@@ -3,11 +3,11 @@ import time
 import socket
 from camera import take_pic
 
-def main():
+def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
     take_pic()
-    image_path = 'piwatch_photo.jpg'
-    HOST = '127.0.0.1'
-    PORT = 65432
+    # image_path = 'piwatch_photo.jpg'
+    # HOST = '127.0.0.1'
+    # PORT = 65432
 
     # Send image every second
     while True:
@@ -25,5 +25,6 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    HOST = input("Enter the Computer address to connect to: ")
+    main(HOST)
     

@@ -7,7 +7,7 @@ import warnings
 
 
 def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
-    # HOST = '127.0.0.1' # input("Enter the PiWatch address to connect to: ")
+    # HOST = input("Enter the PiWatch address to connect to: ")
     # PORT = 65432 # input("Enter the port to connect to: ")
     # image_path = 'output.jpg' # input("Enter the path to save the received image: ")
     # Main while loop
@@ -59,5 +59,6 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
 
 if __name__ == "__main__":
     warnings.filterwarnings("error")
-    main('127.0.0.1', 65432)
+    HOST = input("Enter the Computer address to connect to: ")
+    main(HOST)
     # receive_image()
