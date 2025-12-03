@@ -3,6 +3,12 @@ from time import sleep
 import os
 
 def take_pic():
+	file_path = "./piwatch_photo.jpg"
+
+	if os.path.isfile(file_path):
+		os.remove(file_path)
+		print("File deleted successfully.")
+
 
 	camera = picamera.PiCamera()
 	camera.resolution = (640, 480)
