@@ -1,7 +1,7 @@
 import socket
 from yolo import runInference
 
-HOST = '172.20.10.3'  # The server's hostname or IP address
+HOST = '172.20.10.5'  # The server's hostname or IP address
 PORT = 65432        # The port used by the server
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
