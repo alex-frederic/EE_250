@@ -25,7 +25,6 @@ def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
         print("Image sent successfully.")
         # send_image('image.jpg', '127.0.0.1', 65432)
         s.close()
-        time.sleep(3) 
     
 
 if __name__ == "__main__":
