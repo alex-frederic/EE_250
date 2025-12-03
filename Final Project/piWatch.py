@@ -1,4 +1,4 @@
-
+import send_image from socket_send
 
 def main():
     computer_address = '172.20.10.5' # input("Enter the computer address to connect to: ")
@@ -7,4 +7,5 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    # main()
+    send_image()

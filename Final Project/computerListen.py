@@ -1,3 +1,6 @@
+import receive_image from socket_receive
+
+
 def main():
     computer_address = '172.20.10.5' # input("Enter the computer address to connect to: ")
     piwatch_address = '172.20.10.1' # input("Enter the PiWatch address to connect to: ")
@@ -5,4 +8,5 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    # main()
+    receive_image()
