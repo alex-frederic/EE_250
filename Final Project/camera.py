@@ -9,6 +9,7 @@ def take_pic():
 	camera.start_preview()
 
 	print("Taking image...")
+	time.sleep(5)
 	camera.capture('./piwatch_photo.jpg')
 
 	camera.stop_preview()
