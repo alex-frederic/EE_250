@@ -1,5 +1,5 @@
 import socket
-from yolo import runInference
+# from yolo import runInference
 
 HOST = '172.20.10.5'  # The server's hostname or IP address
 PORT = 65432        # The port used by the server
