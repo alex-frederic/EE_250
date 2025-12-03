@@ -7,6 +7,7 @@ def on_connect(client, userdata, flags, rc):
 	client.subscribe("piwatch/send_img")
 	client.message_callback_add("piwatch/send_img", on_receive_img)
 	
+
 def on_receive_img(client, userdata, msg):
 	print("Received Image!")
 	img = msg.payload
