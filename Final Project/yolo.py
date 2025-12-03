@@ -8,6 +8,5 @@ def runInference(img_path):
     # Load Image and Run inference
     results = model(cv2.imread(img_path))
 
-    # Return annotated result
-    annotated = results[0].plot()
-    return annotated
+    # Return result
+    return results

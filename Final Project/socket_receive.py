@@ -2,7 +2,7 @@ import socket
 from yolo import runInference
 import cv2
 
-def receive_image(HOST='127.0.0.1', PORT=65432):
+def receive_image(HOST='127.0.0.5', PORT=65432):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
         s.listen()
