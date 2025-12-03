@@ -9,8 +9,10 @@ def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
     # PORT = 65432
 
     # Send image every second
+    camera = picamera.PiCamera()
+    camera.resolution = (640, 480)
     while True:
-        take_pic()
+        take_pic(camera)
         print("Trying to connect")
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         print("Socket created.")
