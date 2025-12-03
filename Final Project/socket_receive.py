@@ -1,7 +1,7 @@
 import socket
 
-HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
-PORT = 10000
+HOST = '172.20.10.5'  # Standard loopback interface address (localhost)
+PORT = 65432        # Port to listen on (non-privileged ports are > 1023)
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
@@ -9,8 +9,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     conn, addr = s.accept()
     with conn:
         print(f"Connected by {addr}")
+        # Receive the image data
+        image_data = b''
         while True:
-            data = conn.recv(1024)
-            if not data:
+            chunk = conn.recv(4096)  # Receive data in chunks
+            if not chunk:
                 break
-            conn.sendall(data)
+            image_data += chunk
+        
+        # Save the received image
+        with open('received_image.jpg', 'wb') as f:
+            f.write(image_data)
+        print("Image received and saved as 'received_image.jpg'")
