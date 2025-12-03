@@ -1,4 +1,4 @@
-from piWatchlib import take_picture, send_image
+from piWatchlib import send_image
 import time
 import socket
 from camera import take_pic
