@@ -9,9 +9,11 @@ def take_pic():
 		os.remove(file_path)
 		print("File deleted successfully.")
 
-
+	print("Initializing camera...")
 	camera = picamera.PiCamera()
+	print("Setting resolution...")
 	camera.resolution = (640, 480)
+	print("Starting preview...")
 	camera.start_preview()
 
 	print("Taking image...")
