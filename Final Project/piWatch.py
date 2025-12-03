@@ -2,6 +2,7 @@ from piWatchlib import send_image
 import time
 import socket
 from camera import take_pic
+import picamera
 
 def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
     # image_path = 'piwatch_photo.jpg'

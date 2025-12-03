@@ -3,7 +3,6 @@ from piWatchlib import display_alert, display_image, log_image, current_time
 import socket
 from yolo import runInference
 import cv2
-import warnings
 
 
 def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
@@ -58,7 +57,6 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
     
 
 if __name__ == "__main__":
-    warnings.filterwarnings("error")
     HOST = input("Enter the Computer address to connect to: ")
     main(HOST)
     # receive_image()
