@@ -4,13 +4,13 @@ import socket
 from camera import take_pic
 
 def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
-    take_pic()
     # image_path = 'piwatch_photo.jpg'
     # HOST = '127.0.0.1'
     # PORT = 65432
 
     # Send image every second
     while True:
+        take_pic()
         print("Trying to connect")
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         print("Socket created.")
