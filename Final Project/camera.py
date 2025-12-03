@@ -6,8 +6,8 @@ def take_pic():
 	file_path = "./piwatch_photo.jpg"
 
 	if os.path.isfile(file_path):
-    	os.remove(file_path)
-    	print(f"File '{file_path}' has been deleted successfully.")
+		os.remove(file_path)
+		print(f"File '{file_path}' has been deleted successfully.")
 
 	camera = picamera.PiCamera()
 	camera.resolution = (640, 480)
