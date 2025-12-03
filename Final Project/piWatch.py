@@ -11,17 +11,21 @@ def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
 
     # Send image every second
     while True:
+        print("Trying to connect")
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        print("Socket created.")
         s.connect((HOST, PORT))
+        print("Connected to socket!")
         # Read the image file in binary mode
+        print("Reading image...")
         with open(image_path, 'rb') as f:
             image_data = f.read()
-        
+        print("Sending image...")
         s.sendall(image_data)
         print("Image sent successfully.")
         # send_image('image.jpg', '127.0.0.1', 65432)
         s.close()
-        time.sleep(1) 
+        time.sleep(3) 
     
 
 if __name__ == "__main__":
