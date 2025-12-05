@@ -1,0 +1,21 @@
+#header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+#curr-img {
+  /* position: relative; */
+  border: 1px solid black;
+
+  text-align: center;
+}
+#curr-img img {
+  width: 80%;
+  height: auto;
+
+  display: inline-block;
+}
+
+#log h2 {
+  text-align: center;
+}
