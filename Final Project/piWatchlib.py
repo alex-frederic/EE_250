@@ -1,4 +1,5 @@
 def send_alert(image_path):
+    return
     import requests
     import os
 
