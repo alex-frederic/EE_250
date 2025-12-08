@@ -6,7 +6,7 @@ import cv2
 import requests
 
 
-def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
+def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/listenoutput.jpg'):
     # HOST = input("Enter the PiWatch address to connect to: ")
     # PORT = 65432 # input("Enter the port to connect to: ")
     # image_path = 'output.jpg' # input("Enter the path to save the received image: ")
@@ -30,13 +30,15 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
                 with open(image_path, 'wb') as f:
                     f.write(image_data)
                 print(f"Image received and saved as '{image_path}'")
+                # Refreshes the image on the flask server; probably unnecessary
+                requests.post('http://localhost:5000/curr_img', json={"new_img": image_path})
 
                 # Run inference on image
                 results = runInference(image_path)
                 # Convert to image and save
                 success, encoded = cv2.imencode(".jpg", results[0].plot())
                 img_bytes = encoded.tobytes()
-                annotated_path = 'annotated_' + image_path
+                annotated_path = './frontend/public/img/' + str(current_time()) + '.jpg'
                 with open(annotated_path, 'wb') as f:
                     f.write(img_bytes)
                 print(f"Image annotated and saved as @{annotated_path}")
@@ -51,10 +53,7 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
 
                 if(human_detected):
                     send_alert(annotated_path)
-                    display_image(annotated_path)
-                    log_image(annotated_path + str(current_time()))
-                else:# Display Regular image
-                    display_image(image_path)
+                    log_image(annotated_path)
     
     
 

@@ -27,10 +27,9 @@ def send_alert(image_path):
         except requests.exceptions.ConnectionError:
             print(f"❌ Connection Refused. Is n8n running and listening on localhost:5678?")
 
-def display_image(image_path):
-    print(f"Replacing previous image with new image @{image_path}")
-
 def log_image(image_path):
+    import requests
+    requests.post('http://localhost:5000/log_img', json={"new_img": image_path})
     print(f"Logging image @{image_path}")
 
 def current_time():
