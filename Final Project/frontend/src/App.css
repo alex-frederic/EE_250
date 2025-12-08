@@ -20,7 +20,8 @@
   text-align: center;
 }
 
-/* GPT-5 Mini created the scroll CSS seen below */
+/* GPT-5 Mini created the scroll CSS seen below
+Prompt: Read my front end and help me understand how I would make the image log more of a scroll bar so that the page woudn't get infinitely long */
 
 /* Make the log side panel scrollable so the page doesn't grow infinitely */
 #log {

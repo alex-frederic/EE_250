@@ -1,9 +1,8 @@
 def send_alert(image_path):
-    return
     import requests
     import os
 
-    N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/send-sms-alert'
+    N8N_WEBHOOK_URL = 'https://pcrawseesaw.app.n8n.cloud/webhook/send-sms-alert'
 
     print(f"Attempting to upload: {image_path}")
 
