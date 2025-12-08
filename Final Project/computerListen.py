@@ -1,5 +1,5 @@
 from socket_receive import receive_image
-from piWatchlib import display_alert, display_image, log_image, current_time
+from piWatchlib import send_alert, log_image, current_time
 import socket
 from yolo import runInference
 import cv2
