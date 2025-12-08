@@ -2,9 +2,11 @@
 from flask import Flask, request, jsonify
 import pathlib
 import json
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 thisdir = pathlib.Path(__file__).parent.absolute() # path to directory of this file
 
 def load_imgs():
