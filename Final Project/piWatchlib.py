@@ -1,35 +1,25 @@
-def display_alert(image_path):
+def send_alert(image_path):
     import requests
     import os
 
-    # 1. Configuration
-    # The URL from your screenshot (Test URL)
     N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/send-sms-alert'
 
-    # Check if file exists first
-    if not os.path.exists(image_path):
-        print(f"❌ Error: File not found at {image_path}")
-        print("Please edit the IMAGE_PATH variable in the script.")
-        return
-
     print(f"Attempting to upload: {image_path}")
-    
+
     # Open the file in binary mode
     with open(image_path, 'rb') as img_file:
-        # 2. Prepare the payload
-        # 'file' is the key name n8n will see in the Binary tab
-        files = {
+        # 'file' is the key name n8n uses
+        imgfile = {
             'file': (image_path, img_file, 'image/jpeg')
         }
 
-        try:
-            # 3. Send the POST request
-            response = requests.post(N8N_WEBHOOK_URL, files=files)
+        try: # Gemini wrote this entire error checking part
+            # Send the POST request
+            response = requests.post(N8N_WEBHOOK_URL, files=imgfile)
             
-            # 4. Check results
+            # Check results
             if response.status_code == 200:
                 print("✅ Success! Image sent to n8n.")
-                print("Check your n8n Webhook node output under the 'Binary' tab.")
             else:
                 print(f"⚠️ Failed with Status Code: {response.status_code}")
                 print(f"Response: {response.text}")

@@ -49,7 +49,7 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
 
 
                 if(human_detected):
-                    display_alert(annotated_path)
+                    send_alert(annotated_path)
                     display_image(annotated_path)
                     log_image(annotated_path + str(current_time()))
                 else:# Display Regular image
