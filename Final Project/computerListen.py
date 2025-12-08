@@ -37,7 +37,7 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
                 success, encoded = cv2.imencode(".jpg", results[0].plot())
                 img_bytes = encoded.tobytes()
 
-                annotated_path = './frontend/public/img/annotatedlistenoutput.jpg'
+                annotated_path = './frontend/dist/img/annotatedlistenoutput.jpg'
                 with open(annotated_path, 'wb') as f:
                     f.write(img_bytes)
                 print(f"Image annotated and saved as @{annotated_path}")
@@ -58,7 +58,7 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
                     send_alert(annotated_path)
                     log_image("img/" + time_path)
 
-                    with open('./frontend/public/img/' + time_path, 'wb') as f:
+                    with open('./frontend/dist/img/' + time_path, 'wb') as f:
                         f.write(img_bytes)
 
     

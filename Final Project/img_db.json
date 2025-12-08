@@ -1,9 +1,29 @@
 {
-    "curr_img": "./frontend/public/img/listenoutput.jpg",
+    "curr_img": "img/annotatedlistenoutput.jpg",
     "log": [
         "image.jpg",
         "rpicamexample.jpg",
         "new_img.jpg",
-        "test_log.jpg"
+        "test_log.jpg",
+        "img/20251208-152207.jpg",
+        "img/20251208-152210.jpg",
+        "img/20251208-152214.jpg",
+        "img/20251208-152219.jpg",
+        "img/20251208-152222.jpg",
+        "img/20251208-152227.jpg",
+        "img/20251208-152231.jpg",
+        "img/20251208-152235.jpg",
+        "img/20251208-152239.jpg",
+        "img/20251208-152243.jpg",
+        "img/20251208-152247.jpg",
+        "img/20251208-152251.jpg",
+        "img/20251208-152256.jpg",
+        "img/20251208-152306.jpg",
+        "img/20251208-152315.jpg",
+        "img/20251208-152327.jpg",
+        "img/20251208-152328.jpg",
+        "img/20251208-152331.jpg",
+        "img/20251208-152333.jpg",
+        "img/20251208-152337.jpg"
     ]
 }
