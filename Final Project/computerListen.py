@@ -3,6 +3,7 @@ from piWatchlib import display_alert, display_image, log_image, current_time
 import socket
 from yolo import runInference
 import cv2
+import requests
 
 
 def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
@@ -37,6 +38,7 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
                 img_bytes = encoded.tobytes()
                 with open('annotated_' + image_path, 'wb') as f:
                     f.write(img_bytes)
+                response = requests.post(f'127.0.0.1/curr_img', json=f"img/{image_path}")
                 print(f"Image annotated and saved as @annotated_{image_path}")
 
                 # Check for humans in results
