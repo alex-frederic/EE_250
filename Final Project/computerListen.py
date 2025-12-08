@@ -3,6 +3,7 @@ from piWatchlib import display_alert, display_image, log_image, current_time
 import socket
 from yolo import runInference
 import cv2
+import requests
 
 
 def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
