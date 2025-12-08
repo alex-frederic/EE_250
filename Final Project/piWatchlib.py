@@ -1,5 +1,7 @@
+import requests
 def display_alert():
-    print("ALERT: Human detected!")
+    print("Displaying alert")
+    requests.post('http://localhost:5678/webhook/send-sms-alert')
 def display_image(image_path):
     print(f"Replacing previous image with new image @{image_path}")
 def log_image(image_path):
