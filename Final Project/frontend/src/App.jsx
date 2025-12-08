@@ -1,24 +1,28 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
+
+import {LogEntry} from "./LogEntry.jsx"
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const [currImg, setCurrImg] = useState("");
-const [logImgs, setLogImgs] = useState([]);
-
 function App() {
 
-  let currImg = "";
+  const [currImg, setCurrImg] = useState("placeholder.jpg");
+  const [logImgs, setLogImgs] = useState(["placeholder.jpg"]);
+  const [showLogImg, setShowLogImg] = useState(logImgs[0]);
+
+  let logEntryKey = 1;
+
   async function pollingFunc(){
     const currResponse = await fetch("http://127.0.0.1:5000/curr_img");
     const currResults = await currResponse.json();
     console.log(currResults);
+    setCurrImg(currResults.currImg);
 
-
-    const logResponse = await fetch("127.0.0.1:5000/log_img");
+    const logResponse = await fetch("http://127.0.0.1:5000/log_img");
     const logResults = await logResponse.json();
     console.log(logResults);
-
+    setLogImgs(logResults.log);
 
   }
 
@@ -34,6 +38,10 @@ function App() {
   },
   []);
 
+  function handleEntryClick(url) {
+    setShowLogImg(url);
+  }
+
   return (
     <>
       <div id="header">
@@ -42,12 +50,18 @@ function App() {
       <div className="container">
         <div className="row">
           <div id="curr-img" className="col-8">
-            <img src="img/image.jpg" alt="Currently Displayed Image" />
+            <img src={currImg} alt="Currently Displayed Image" />
+            <img src={showLogImg} alt={showLogImg} />
           </div>
           <div id="log" className="col-4">
             <h2>Log</h2>
 
             {/* PUT LOG ENTRIES HERE */}
+
+            {logImgs.map( (entry) => {
+              logEntryKey ++;
+              return (<LogEntry url={entry} parentHandleClick={handleEntryClick} key={logEntryKey} />);
+            } ) }
 
           </div>
         </div>
