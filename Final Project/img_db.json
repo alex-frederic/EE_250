@@ -1,5 +1,5 @@
 {
-    "curr_img": "test_curr.jpg",
+    "curr_img": "./frontend/public/img/listenoutput.jpg",
     "log": [
         "image.jpg",
         "rpicamexample.jpg",
