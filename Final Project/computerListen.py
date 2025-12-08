@@ -36,10 +36,10 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
                 # Convert to image and save
                 success, encoded = cv2.imencode(".jpg", results[0].plot())
                 img_bytes = encoded.tobytes()
-                with open('annotated_' + image_path, 'wb') as f:
+                annotated_path = 'annotated_' + image_path
+                with open(annotated_path, 'wb') as f:
                     f.write(img_bytes)
-                response = requests.post(f'127.0.0.1/curr_img', json=f"img/{image_path}")
-                print(f"Image annotated and saved as @annotated_{image_path}")
+                print(f"Image annotated and saved as @{annotated_path}")
 
                 # Check for humans in results
                 human_detected = False
@@ -50,9 +50,9 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='listenoutput.jpg'):
 
 
                 if(human_detected):
-                    display_alert()
-                    display_image('annotated_' + image_path)
-                    log_image('annotated_' + image_path + str(current_time()))
+                    display_alert(annotated_path)
+                    display_image(annotated_path)
+                    log_image(annotated_path + str(current_time()))
                 else:# Display Regular image
                     display_image(image_path)
     
