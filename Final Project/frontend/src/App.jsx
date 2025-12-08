@@ -14,12 +14,12 @@ function App() {
   let logEntryKey = 1;
 
   async function pollingFunc(){
-    const currResponse = await fetch("http://172.20.10.5:5000/curr_img");
+    const currResponse = await fetch("http://127.0.0.1:5000/curr_img");
     const currResults = await currResponse.json();
     console.log(currResults);
     setCurrImg(currResults.currImg);
 
-    const logResponse = await fetch("http://172.20.10.5:5000/log_img");
+    const logResponse = await fetch("http://127.0.0.1:5000/log_img");
     const logResults = await logResponse.json();
     console.log(logResults);
     setLogImgs(logResults.log);
