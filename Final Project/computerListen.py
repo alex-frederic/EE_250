@@ -30,18 +30,20 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
                 with open(image_path, 'wb') as f:
                     f.write(image_data)
                 print(f"Image received and saved as '{image_path}'")
-                # Refreshes the image on the flask server; probably unnecessary
-                requests.post('http://localhost:5000/curr_img', json={"new_img": image_path})
 
                 # Run inference on image
                 results = runInference(image_path)
                 # Convert to image and save
                 success, encoded = cv2.imencode(".jpg", results[0].plot())
                 img_bytes = encoded.tobytes()
-                annotated_path = './frontend/public/img/' + str(current_time()) + '.jpg'
+
+                annotated_path = './frontend/public/img/annotatedlistenoutput.jpg'
                 with open(annotated_path, 'wb') as f:
                     f.write(img_bytes)
                 print(f"Image annotated and saved as @{annotated_path}")
+
+                # Refreshes the image on the flask server; probably unnecessary
+                requests.post('http://localhost:5000/curr_img', json={"new_img": "img/annotatedlistenoutput.jpg"})
 
                 # Check for humans in results
                 human_detected = False
@@ -52,8 +54,13 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
 
 
                 if(human_detected):
+                    time_path = str(current_time()) + '.jpg'
                     send_alert(annotated_path)
-                    log_image(annotated_path)
+                    log_image("img/" + time_path)
+
+                    with open('./frontend/public/img/' + time_path, 'wb') as f:
+                        f.write(img_bytes)
+
     
     
 
