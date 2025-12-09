@@ -1,9 +1,5 @@
 def send_alert(image_path):
     import requests
-    # import os
-
-    # os.system("curl -X POST https://pcrawseesaw.app.n8n.cloud/webhook/send-sms-alert")
-    # return
 
     N8N_WEBHOOK_URL = 'https://pcrawseesaw.app.n8n.cloud/webhook/send-sms-alert'
 
@@ -16,7 +12,7 @@ def send_alert(image_path):
             'file': (image_path, img_file, 'image/jpeg')
         }
 
-        try: # Gemini wrote this entire error checking part
+        try: # Gemini wrote this entire error checking part when I asked to add image as a parameter
             # Send the POST request
             response = requests.post(N8N_WEBHOOK_URL, files=imgfile)
             
