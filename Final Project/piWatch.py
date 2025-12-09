@@ -31,15 +31,7 @@ def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
         # send_image('image.jpg', '127.0.0.1', 65432)
         s.close()
 
-        # time.sleep(5)
-        end = datetime.now()
-        totalTime = end - start
-        totalTimeSec = totalTime.total_seconds()
-        sleepTime = 1 - totalTimeSec
-        if sleepTime < 0:
-            sleepTime = 0 # For initial connection delay
-        time.sleep(sleepTime)
-        print("Slept for " + str(sleepTime) + " seconds")
+        time.sleep(3)
     
 
 if __name__ == "__main__":
