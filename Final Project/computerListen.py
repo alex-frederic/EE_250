@@ -65,7 +65,7 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
                         f.write(img_bytes)
             end = datetime.now()
             print(end)
-            totalTime = end - start - 5
+            totalTime = end - start - t.timedelta(seconds=5) # subtract sleep time
             print(f"Time taken ignoring sleep: {totalTime}")
             
 
