@@ -14,11 +14,6 @@ function App() {
   let logEntryKey = 1;
 
   async function pollingFunc(){
-    const currResponse = await fetch("http://127.0.0.1:5000/curr_img");
-    const currResults = await currResponse.json();
-    console.log(currResults);
-    setCurrImg(currResults.currImg);
-
     const logResponse = await fetch("http://127.0.0.1:5000/log_img");
     const logResults = await logResponse.json();
     console.log(logResults);
@@ -27,7 +22,6 @@ function App() {
   }
 
   useEffect( () => {
-    // const pollingRef = useRef(null);
     function startPolling () {
       setInterval( () => {
         pollingFunc();
@@ -50,7 +44,7 @@ function App() {
       <div className="container">
         <div className="row">
           <div id="curr-img" className="col-8">
-            <img src={currImg} alt="Currently Displayed Image" />
+            <h2>Selected Image</h2>
             <img src={showLogImg} alt={showLogImg} />
           </div>
           <div id="log" className="col-4">

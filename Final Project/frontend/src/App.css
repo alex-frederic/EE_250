@@ -15,6 +15,9 @@
 
   display: inline-block;
 }
+#curr-img h2 {
+  text-align: center;
+}
 
 #log h2 {
   text-align: center;
