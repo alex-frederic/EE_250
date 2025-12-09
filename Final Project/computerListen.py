@@ -15,7 +15,8 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
         while True:
-            print(datetime.now())
+            start = datetime.now()
+            print(start)
             s.listen()
             conn, addr = s.accept()
             with conn:
@@ -62,6 +63,11 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
 
                     with open('./frontend/public/img/' + time_path, 'wb') as f:
                         f.write(img_bytes)
+            end = datetime.now()
+            print(end)
+            totalTime = end - start - 5
+            print(f"Time taken ignoring sleep: {totalTime}")
+            
 
     
     
