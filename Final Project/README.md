@@ -5,6 +5,7 @@ Peyton Crawford
 ## Instructions for Compilation/Execution
 First, install the RPi camera into the "CAMERA" port of the RPI 4B using the ribbon connector. Ensure the computer and the RPi are on the same local network and SSH into the RPI.
 Ensure you have NodeJS and NPM installed on your machine and enter the frontend/ directory. If you haven't already, run "npm install" to ensure you have all React dependencies installed. Also make sure to download the requirements.txt (opencv and ultralytics are big).
+Ensure all images from previous runs in the frontend/public/img are deleted and all entries except "image.jpg" in the "log" element of the img_db.json file are removed before running.
 Then, run the flaskServer.py program using the latest version of Python3.
 Then, run the computerListen.py program using the same version of Python3. This will connect to flaskServer.py, so it needs to be run after it.
 Wait a moment for the "Enter the Computer address to connect to: " input prompt to appear in the terminal. Then, input the IP address of the computer that you are running this program from.
