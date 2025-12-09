@@ -1,0 +1,11 @@
+picamera
+socket
+flask
+time
+os
+ultralytics
+requests
+opencv-python
+pathlib
+flask-cors
+json
