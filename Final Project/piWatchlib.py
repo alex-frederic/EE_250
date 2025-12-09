@@ -1,7 +1,9 @@
 def send_alert(image_path):
-    return
     import requests
     import os
+
+    os.system("curl -X POST https://pcrawseesaw.app.n8n.cloud/webhook/send-sms-alert")
+    return
 
     N8N_WEBHOOK_URL = 'https://pcrawseesaw.app.n8n.cloud/webhook/send-sms-alert'
 
