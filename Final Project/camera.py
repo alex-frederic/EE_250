@@ -16,3 +16,4 @@ def take_pic(camera):
 	camera.capture('./piwatch_photo.jpg')
 
 	camera.stop_preview()
+	
