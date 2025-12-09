@@ -4,7 +4,6 @@ import socket
 from yolo import runInference
 import cv2
 import requests
-from datetime import datetime
 
 
 def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/listenoutput.jpg'):
@@ -15,8 +14,6 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
         while True:
-            start = datetime.now()
-            # print(start)
             s.listen()
             conn, addr = s.accept()
             with conn:
@@ -63,12 +60,6 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
 
                     with open('./frontend/public/img/' + time_path, 'wb') as f:
                         f.write(img_bytes)
-            end = datetime.now()
-            # print(end)
-            totalTime = end - start
-            totalTimeSec = totalTime.total_seconds()
-            time.sleep(1-totalTimeSec)
-            print("Slept for " + str(1-totalTimeSec) + " seconds")
 
             
 
