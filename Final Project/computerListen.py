@@ -1,4 +1,3 @@
-from socket_receive import receive_image
 from piWatchlib import send_alert, log_image, current_time
 import socket
 from yolo import runInference
@@ -69,4 +68,3 @@ def main(HOST = '127.0.0.1', PORT = 65432, image_path='./frontend/public/img/lis
 if __name__ == "__main__":
     HOST = input("Enter the Computer address to connect to: ")
     main(HOST)
-    # receive_image()

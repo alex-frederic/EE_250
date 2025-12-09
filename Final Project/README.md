@@ -16,3 +16,16 @@ Ensure you have NodeJS and NPM installed on your machine and enter the frontend/
 ## Libraries
 Python:
 picamera
+socket
+flask
+time
+os
+ultralytics
+requests
+cv2
+pathlib
+flask-cors
+json
+
+React:
+bootstrap (CSS)

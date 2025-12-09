@@ -3,7 +3,6 @@ import time
 import socket
 from camera import take_pic
 import picamera
-from datetime import datetime
 
 def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
     # image_path = 'piwatch_photo.jpg'
@@ -14,7 +13,6 @@ def main(HOST='127.0.0.1', PORT=65432, image_path='piwatch_photo.jpg'):
     camera = picamera.PiCamera()
     camera.resolution = (640, 480)
     while True:
-        start = datetime.now()
         take_pic(camera)
         print("Trying to connect")
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
