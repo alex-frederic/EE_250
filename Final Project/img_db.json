@@ -1,6 +1,8 @@
 {
     "curr_img": "img/annotatedlistenoutput.jpg",
     "log": [
-        "image.jpg"
+        "img/image.jpg",
+        "img/20251208-191503.jpg",
+        "img/20251208-191508.jpg"
     ]
 }
